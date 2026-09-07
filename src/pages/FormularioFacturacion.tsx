@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { billingFormSchema, type BillingFormValues } from '../schemas/billing.schema';
 import { getSaleDetail, createBillingRequest } from '../api/billing';
 import SaleSummary from '../components/SaleSummary';
@@ -11,8 +11,7 @@ import AddressFields from '../components/AddressFields';
 export default function FormularioFacturacion() {
   const { saleId } = useParams();
   const navigate = useNavigate();
-  const location = useLocation();
-  const initialSale = location.state?.sale;
+ 
 
   const [saleDetail, setSaleDetail] = useState<any>(null);
   const [loadingDetail, setLoadingDetail] = useState(true);
