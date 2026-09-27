@@ -11,8 +11,9 @@ export interface CfdiUsage {
   description: string;
 }
 
-export function verifySale(folio: string, fecha: string) {
-  return apiFetch<SaleVerifyResponse>(`/api/billing/verify?folio=${folio}&fecha=${fecha}`);
+export function verifySale(folio: string, fecha: string, hora: string, codigo: string) {
+  const params = new URLSearchParams({ folio, fecha, hora, codigo });
+  return apiFetch<SaleVerifyResponse>(`/api/billing/verify?${params.toString()}`);
 }
 
 export function getCfdiUsageCatalog() {

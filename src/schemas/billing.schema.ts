@@ -6,6 +6,11 @@ const rfcMoralRegex = /^[A-ZÑ&]{3}\d{6}[A-Z0-9]{3}$/;
 export const verifyFolioSchema = z.object({
   folio: z.string().min(1, 'El folio es obligatorio'),
   fecha: z.string().min(1, 'La fecha es obligatoria'),
+  hora: z.string().min(1, 'La hora es obligatoria'),
+  codigo: z
+    .string()
+    .min(1, 'El código es obligatorio')
+    .toUpperCase(),
 });
 
 export const billingFormSchema = z
@@ -53,6 +58,8 @@ export const billingFormSchema = z
       }
     }
   });
+
+  
 
 export type BillingFormValues = z.infer<typeof billingFormSchema>;
 export type VerifyFolioValues = z.infer<typeof verifyFolioSchema>;
